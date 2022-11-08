@@ -5,20 +5,23 @@ const log = (...sometigth)=>{
 }
 const makeHtml = (data)=>{
     log(data)
+    const card = document.getElementById("Card")
     const { main, name, sys, weather } = data
     const img = (weather[0].icon)
     const temperatura = main.temp
     const imagenName = weather[0].main
+    const container = document.createElement("div")
     const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${img}.svg`
     const imagen = document.createElement("img")
     const cityName = document.createElement("p")
     const temp = document.createElement("p")
     const tempName = document.createElement("p")
     imagen.src = icon
-    document.getElementById("Card").appendChild(imagen)
-    document.getElementById("Card").appendChild(cityName)
-    document.getElementById("Card").appendChild(temp)
-    document.getElementById("Card").appendChild(tempName)
+    card.appendChild(container)
+    container.appendChild(imagen)
+    container.appendChild(cityName)
+    container.appendChild(temp)
+    container.appendChild(tempName)
     cityName.innerText = name
     temp.innerText = temperatura
     tempName.innerText = imagenName
