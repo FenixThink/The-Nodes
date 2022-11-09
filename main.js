@@ -1,8 +1,11 @@
+let array1 = []
+let c = 0;
+let cDelete = 0;
 const log = (...sometigth)=>{
     console.log(sometigth)    
 }
 const makeHtml = (data)=>{
-    log(data)
+    c++
     let array = []
     const card = document.getElementById("Card")
     const { main, name, sys, weather } = data
@@ -19,6 +22,7 @@ const makeHtml = (data)=>{
     const tempName = document.createElement("p")
     imagen.src = icon
     card.appendChild(container)
+    container.setAttribute("id", `div${c}`);
     container.appendChild(imagen)
     container.appendChild(cityName)
     container.appendChild(temp)
@@ -29,15 +33,21 @@ const makeHtml = (data)=>{
     tempName.innerText = imagenName
     countryName.innerText = country
     const sotrge = localStorage.getItem("City")
-    log(sotrge)
     array.push(sotrge)
     array.push(name)
-    log(array)
+    if (array.length>5) {
+        array.shift();
+    }
     localStorage.setItem("City", array)
+    array1.push(container)
+    if (array1.length>5) {
+        array1.shift();
+        cDelete++;
+        document.getElementById(`div${cDelete}`).remove()
 }
-
+}
 const makeHtml1 = (data)=>{
-    log(data)
+    c++
     const card = document.getElementById("Card")
     const { main, name, sys, weather } = data
     const img = (weather[0].icon)
@@ -53,6 +63,7 @@ const makeHtml1 = (data)=>{
     const tempName = document.createElement("p")
     imagen.src = icon
     card.appendChild(container)
+    container.setAttribute("id", `div${c}`);
     container.appendChild(imagen)
     container.appendChild(cityName)
     container.appendChild(temp)
@@ -62,9 +73,14 @@ const makeHtml1 = (data)=>{
     temp.innerText = temperatura
     tempName.innerText = imagenName
     countryName.innerText = country
+    array1.push(container)
+    if (array1.length>5) {
+        array1.shift();
+        cDelete++;
+        document.getElementById(`div${cDelete}`).remove()
+    }
 }
 const loadMain = (city) =>{
-    log(`Esta es la city ${city}`)
     const link = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4d8fb5b93d4af21d66a2948710284366&units=metric`;
     const info = async ()=>{
         try {
@@ -104,11 +120,9 @@ document.getElementById("city").addEventListener("keypress", function (e) {
 
 window.addEventListener("load", ()=>{
     let sotrge = localStorage.getItem("City")
-    log(typeof(sotrge))
     sotrge = sotrge.split(",")
     for (let i = 0; i < sotrge.length; i++) {
         city = sotrge[i]
         loadMain(city)
-        log(i)
     }
 })
