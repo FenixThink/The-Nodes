@@ -6,20 +6,21 @@ const log = (...sometigth)=>{
 }
 const makeHtml = (data)=>{
     c++
+    log(data)
     let array = []
     const card = document.getElementById("Card")
     const { main, name, sys, weather } = data
     const img = (weather[0].icon)
     const temperatura = main.temp
     const country = sys.country
-    const imagenName = weather[0].main
+    const imagenName = weather[0].description
     const container = document.createElement("div")
     const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${img}.svg`
     const imagen = document.createElement("img")
     const cityName = document.createElement("p")
     const countryName = document.createElement("p")
     const temp = document.createElement("p")
-    const tempName = document.createElement("p")
+    const tempName = document.createElement("p")        
     imagen.src = icon
     card.appendChild(container)
     container.setAttribute("id", `div${c}`);
@@ -29,7 +30,7 @@ const makeHtml = (data)=>{
     container.appendChild(tempName)
     container.appendChild(countryName)
     cityName.innerText = name
-    temp.innerText = temperatura
+    temp.innerText = `${temperatura} °C`
     tempName.innerText = imagenName
     countryName.innerText = country
     const sotrge = localStorage.getItem("City")
@@ -53,7 +54,7 @@ const makeHtml1 = (data)=>{
     const img = (weather[0].icon)
     const temperatura = main.temp
     const country = sys.country
-    const imagenName = weather[0].main
+    const imagenName = weather[0].description
     const container = document.createElement("div")
     const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${img}.svg`
     const imagen = document.createElement("img")
@@ -70,7 +71,7 @@ const makeHtml1 = (data)=>{
     container.appendChild(tempName)
     container.appendChild(countryName)
     cityName.innerText = name
-    temp.innerText = temperatura
+    temp.innerText = `${temperatura} °C`
     tempName.innerText = imagenName
     countryName.innerText = country
     array1.push(container)
@@ -81,7 +82,7 @@ const makeHtml1 = (data)=>{
     }
 }
 const loadMain = (city) =>{
-    const link = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4d8fb5b93d4af21d66a2948710284366&units=metric`;
+    const link = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4d8fb5b93d4af21d66a2948710284366&units=metric&lang=sp`;
     const info = async ()=>{
         try {
             const res = await fetch(link)
@@ -96,17 +97,17 @@ const loadMain = (city) =>{
 const wheaterclim = (e)=>{
     e.preventDefault
     const city = document.querySelector("#city").value
-    const link = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4d8fb5b93d4af21d66a2948710284366&units=metric`;
+    const link = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4d8fb5b93d4af21d66a2948710284366&units=metric&lang=sp`;
     const info = async ()=>{
         try {
             const res = await fetch(link)
              const data = await res.json()
              makeHtml(data)
         } catch (error) {
-            document.querySelector("#city").value =  " "
             alert("Error, Ingrese una ciudad valida")
         }
     }
+    document.querySelector("#city").value =  " "
     info()
 }
 document.querySelector("#hola").addEventListener("click", wheaterclim)
