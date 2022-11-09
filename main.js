@@ -1,5 +1,3 @@
-
-/* const city = document.querySelector(".#city").value */
 const log = (...sometigth)=>{
     console.log(sometigth)    
 }
@@ -9,11 +7,13 @@ const makeHtml = (data)=>{
     const { main, name, sys, weather } = data
     const img = (weather[0].icon)
     const temperatura = main.temp
+    const country = sys.country
     const imagenName = weather[0].main
     const container = document.createElement("div")
     const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${img}.svg`
     const imagen = document.createElement("img")
     const cityName = document.createElement("p")
+    const countryName = document.createElement("p")
     const temp = document.createElement("p")
     const tempName = document.createElement("p")
     imagen.src = icon
@@ -22,9 +22,11 @@ const makeHtml = (data)=>{
     container.appendChild(cityName)
     container.appendChild(temp)
     container.appendChild(tempName)
+    container.appendChild(countryName)
     cityName.innerText = name
     temp.innerText = temperatura
     tempName.innerText = imagenName
+    countryName.innerText = country
 }
 const wheaterclim = (e)=>{
     e.preventDefault
@@ -41,5 +43,4 @@ const wheaterclim = (e)=>{
     }
     info()
 }
-
 document.querySelector("#hola").addEventListener("click", wheaterclim)
