@@ -102,7 +102,7 @@ const makeHtml1 = (data)=>{
     }
 }
 const loadMain = (city) =>{
-    const link = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4d8fb5b93d4af21d66a2948710284366&units=metric&lang=sp`;
+    const link = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=eb380ce293c80acb396c9d71258f3d32&units=metric&lang=sp`;
     const info = async ()=>{
         try {
             const res = await fetch(link)
@@ -117,7 +117,7 @@ const loadMain = (city) =>{
 const wheaterclim = (e)=>{
     e.preventDefault
     const city = document.querySelector("#city").value
-    const link = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4d8fb5b93d4af21d66a2948710284366&units=metric&lang=sp`;
+    const link = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=eb380ce293c80acb396c9d71258f3d32&units=metric&lang=sp`;
     const info = async ()=>{
         try {
             const res = await fetch(link)
