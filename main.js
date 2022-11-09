@@ -20,6 +20,7 @@ const makeHtml = (data)=>{
     const cityName = document.createElement("p")
     const countryName = document.createElement("p")
     const temp = document.createElement("p")
+    const nameTime = document.createElement("p")
     const tempName = document.createElement("p")        
     imagen.src = icon
     card.appendChild(container)
@@ -29,6 +30,7 @@ const makeHtml = (data)=>{
     container.appendChild(temp)
     container.appendChild(tempName)
     container.appendChild(countryName)
+    container.appendChild(nameTime)
     cityName.innerText = name
     temp.innerText = `${temperatura} °C`
     tempName.innerText = imagenName
@@ -36,6 +38,15 @@ const makeHtml = (data)=>{
     const sotrge = localStorage.getItem("City")
     array.push(sotrge)
     array.push(name)
+    let time = [...img]
+    time = time.pop()
+    log(time)
+
+    if (time == "n") {
+        nameTime.innerText = "Noche"
+    }else if ( time == "d"){
+        nameTime.innerText = "Dia"
+    }
     if (array.length>5) {
         array.shift();
     }
@@ -62,6 +73,7 @@ const makeHtml1 = (data)=>{
     const countryName = document.createElement("p")
     const temp = document.createElement("p")
     const tempName = document.createElement("p")
+    const nameTime = document.createElement("p")
     imagen.src = icon
     card.appendChild(container)
     container.setAttribute("id", `div${c}`);
@@ -70,11 +82,19 @@ const makeHtml1 = (data)=>{
     container.appendChild(temp)
     container.appendChild(tempName)
     container.appendChild(countryName)
+    container.appendChild(nameTime)
     cityName.innerText = name
     temp.innerText = `${temperatura} °C`
     tempName.innerText = imagenName
     countryName.innerText = country
     array1.push(container)
+    let time = [...img]
+    time = time.pop()
+    if (time === "n") {
+        nameTime.innerText = "Noche"
+    }else if ( time === "d"){
+        nameTime.innerText = "Dia"
+    }
     if (array1.length>5) {
         array1.shift();
         cDelete++;
