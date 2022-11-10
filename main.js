@@ -36,8 +36,8 @@ const makeHtml = (data)=>{
     tempName.innerText = imagenName
     countryName.innerText = country
     const sotrge = localStorage.getItem("City")
-    array.push(sotrge)
-    array.push(name)
+    // array.push(sotrge)
+    // array.push(name)
     let time = [...img]
     time = time.pop()
     log(time)
@@ -47,16 +47,16 @@ const makeHtml = (data)=>{
     }else if ( time == "d"){
         nameTime.innerText = "Dia"
     }
-    if (array.length>5) {
-        array.shift();
-    }
-    localStorage.setItem("City", array)
-    array1.push(container)
-    if (array1.length>5) {
-        array1.shift();
-        cDelete++;
-        document.getElementById(`div${cDelete}`).remove()
-}
+//     if (array.length>5) {
+//         array.shift();
+//     }
+//     localStorage.setItem("City", array)
+//     array1.push(container)
+//     if (array1.length>5) {
+//         array1.shift();
+//         cDelete++;
+//         document.getElementById(`div${cDelete}`).remove()
+// }
 }
 const makeHtml1 = (data)=>{
     c++
@@ -87,7 +87,7 @@ const makeHtml1 = (data)=>{
     temp.innerText = `${temperatura} °C`
     tempName.innerText = imagenName
     countryName.innerText = country
-    array1.push(container)
+    // array1.push(container)
     let time = [...img]
     time = time.pop()
     if (time === "n") {
@@ -95,11 +95,11 @@ const makeHtml1 = (data)=>{
     }else if ( time === "d"){
         nameTime.innerText = "Dia"
     }
-    if (array1.length>5) {
-        array1.shift();
-        cDelete++;
-        document.getElementById(`div${cDelete}`).remove()
-    }
+    // if (array1.length>5) {
+    //     array1.shift();
+    //     cDelete++;
+    //     document.getElementById(`div${cDelete}`).remove()
+    // }
 }
 const loadMain = (city) =>{
     const link = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=eb380ce293c80acb396c9d71258f3d32&units=metric&lang=sp`;

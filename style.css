@@ -47,11 +47,14 @@ main{
 
 .card{
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+
     align-items: center;
 
 }
 .card div{
+    display: flex;
+    flex-direction: column;
     text-align: center;
     margin: 1vh;
     padding: 1vh;
